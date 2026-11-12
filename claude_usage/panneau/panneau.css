@@ -1,0 +1,78 @@
+* { box-sizing: border-box; }
+html, body { background: transparent; margin: 0; }
+
+/* Variables du panneau Natif, reprises de Hue Controller (DESIGN.md, « Mode sombre »), plus les deux couleurs d'état
+   de ce projet (DESIGN.md, « Couleurs d'état »). */
+.natif { --police: -apple-system, "Helvetica Neue", sans-serif; --inter-on: #34c759; color-scheme: light;
+  --texte: #1d1d1f; --second: #5c5c61; --creux: rgba(0,0,0,.07); --tuile: rgba(255,255,255,.74);
+  --avant: #fff; --bord: rgba(0,0,0,.1); --piste: rgba(0,0,0,.14); --inter-off: rgba(0,0,0,.18);
+  --attention: #c96a00; --limite: #d70015; }
+html[data-theme="sombre"] .natif { color-scheme: dark;
+  --texte: #f5f5f7; --second: rgba(255,255,255,.62); --creux: rgba(255,255,255,.08); --tuile: rgba(255,255,255,.1);
+  --avant: rgba(255,255,255,.2); --bord: rgba(255,255,255,.12); --piste: rgba(255,255,255,.2); --inter-off: rgba(255,255,255,.2);
+  --attention: #ff9f0a; --limite: #ff453a; }
+
+/* Dans l'app, le panneau natif de macOS fournit fond, bordure, ombre et rayon. La hauteur suit le contenu : l'app la
+   lit (message « hauteur ») pour dimensionner la fenêtre. */
+.panneau { display: flex; flex-direction: column; position: relative; width: 360px;
+  font: 13px/16px var(--police); color: var(--texte); }
+
+.entete { display: flex; align-items: center; gap: 12px; padding: 16px 12px 8px; }
+.entete .noms { flex: 1; min-width: 0; }
+.entete .piece { font-size: 20px; line-height: 24px; font-weight: 700; }
+.entete .etat { font-size: 12px; line-height: 16px; color: var(--second); }
+/* Le lien discret de la ligne d'état : texte secondaire, souligné au survol (même dessin que la signature). */
+.lien { padding: 0; border: 0; background: none; font: inherit; color: var(--second); cursor: pointer; }
+.lien:hover { color: var(--texte); text-decoration: underline; }
+
+.inter { flex: none; width: 36px; height: 20px; border-radius: 10px; border: 0; padding: 2px; background: var(--inter-off); cursor: pointer; }
+.inter::after { content: ""; display: block; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.3); transition: transform .12s; }
+.inter[aria-checked="true"] { background: var(--inter-on); }
+.inter[aria-checked="true"]::after { transform: translateX(16px); }
+
+/* Titres de section : petites capitales grises espacées (Hue Controller). */
+.titre { margin: 0; padding: 4px 12px 8px; font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--second); }
+
+/* Roue dentée de l'en-tête : 28 px, sans fond ; creux au survol et quand les réglages sont ouverts. */
+.roue { flex: none; display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--second); cursor: pointer; }
+.roue svg { width: 16px; height: 16px; }
+.roue:hover, .roue[aria-pressed="true"] { background: var(--creux); }
+
+/* Les deux cartes : une par fenêtre. Couleur de la barre et du chiffre selon le niveau (< 75, 75 à 89, 90 et plus). */
+.cartes { display: flex; flex-direction: column; gap: 8px; padding: 4px 12px 12px; }
+.fenetre { --remplis: var(--inter-on); --chiffre: var(--texte); padding: 12px; border-radius: 8px; background: var(--tuile); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.fenetre.attention { --remplis: var(--attention); --chiffre: var(--attention); }
+.fenetre.limite { --remplis: var(--limite); --chiffre: var(--limite); }
+.fenetre .rang { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.fenetre .titre { padding: 0; }
+.fenetre .pct { font-size: 16px; line-height: 20px; font-weight: 650; font-variant-numeric: tabular-nums; color: var(--chiffre); }
+.fenetre .barre { height: 8px; margin-top: 8px; border-radius: 4px; background: var(--piste); overflow: hidden; }
+.fenetre .barre i { display: block; width: 0; height: 100%; border-radius: 4px; background: var(--remplis); transition: width .3s ease; }
+.fenetre .info { margin-top: 8px; font-size: 12px; line-height: 16px; color: var(--second); font-variant-numeric: tabular-nums; }
+
+/* Vue Réglages : remplace tout ce qui est sous l'en-tête. */
+.panneau.en-reglages > :not(.entete):not(.reglages) { display: none; }
+.reglages { display: flex; flex-direction: column; padding: 0 12px 12px; }
+.reglages[hidden] { display: none; }
+.reglages .bloc { padding: 12px; border-radius: 8px; background: var(--tuile); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.reglages .bloc + .bloc { margin-top: 8px; }
+.reglages .ligne { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 20px; }
+.reglages .bloc.court { display: flex; align-items: center; height: 44px; padding: 0 12px; }
+.reglages .bloc.court .ligne { flex: 1; }
+.reglages .note { margin-top: 4px; font-size: 12px; line-height: 16px; color: var(--second); }
+/* Quitter : une carte cliquable, avec le pictogramme marche/arrêt (Hue Controller). */
+.quitter { display: flex; align-items: center; gap: 8px; width: 100%; height: 44px; margin-top: 8px; padding: 0 12px; border: 0; border-radius: 8px;
+  background: var(--tuile); box-shadow: 0 1px 2px rgba(0,0,0,.06); color: var(--texte); font: inherit; text-align: left; cursor: pointer; transition: background .12s; }
+.quitter:hover { background: var(--avant); }
+.quitter svg { flex: none; width: 16px; height: 16px; color: var(--second); }
+.bas { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+.auteur { height: 28px; padding: 0; border: 0; background: none; font: inherit; font-size: 12px; color: var(--second); cursor: pointer; }
+.auteur:hover { color: var(--texte); text-decoration: underline; }
+.termine { height: 28px; padding: 0 12px; border: 0; border-radius: 6px; background: var(--creux); color: var(--texte); font: inherit; font-weight: 600; cursor: pointer; }
+
+/* Navigateur seulement : fond de démonstration, et le rendu que le panneau natif donne dans l'app. */
+html.demo body { min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #8fa3b8 0%, #5d6f86 45%, #3b4658 100%); }
+html.demo .panneau { background: rgba(244,244,246,.82); border: 1px solid var(--bord); border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,.28);
+  -webkit-backdrop-filter: blur(32px) saturate(1.6); backdrop-filter: blur(32px) saturate(1.6); }
+html.demo[data-theme="sombre"] .panneau { background: rgba(40,40,44,.82); }

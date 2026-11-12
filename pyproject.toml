@@ -1,0 +1,9 @@
+[project]
+name = "claude-usage"
+version = "0.1.0"
+description = "La consommation de l'abonnement Claude dans la barre de menus du Mac"
+requires-python = ">=3.12"
+dependencies = [
+    "pyobjc-framework-Cocoa",
+    "pyobjc-framework-WebKit",
+]
