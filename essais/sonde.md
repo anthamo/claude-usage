@@ -38,8 +38,8 @@ secret pour une information que Claude Code donne déjà.
 
 ## Ce que la sonde pèse dans l'abonnement (estimé le 13/11/2026)
 
-Les journaux locaux de Claude Code, chiffrés au tarif public, donnaient 124 $ pour 35 % de la semaine et 2,2 $ pour
-7 % de la session, sur l'abonnement de l'auteur. Soit environ 3,5 $ par point de semaine et 0,3 $ par point de session.
-Une sonde (0,002 $) pèse donc 0,007 % d'une session ; toutes les 15 minutes, 0,13 % d'une session de 5 heures et
-0,4 % de la semaine. Ordre de grandeur seulement : il dépend de la formule d'abonnement, et l'estimation de session
+Méthode : chiffrer au tarif public la consommation des journaux locaux de Claude Code, la rapporter aux pourcentages
+de session et de semaine affichés au même moment, et en tirer ce que vaut un point de pourcentage. Résultat : une sonde
+(0,002 $) pèse environ 0,007 % d'une session ; toutes les 15 minutes, 0,13 % d'une session de 5 heures et 0,4 % de la
+semaine. Ordre de grandeur seulement : il dépend de la formule d'abonnement, et l'estimation de session
 repose sur dix minutes de données.
