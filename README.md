@@ -26,9 +26,19 @@ Entre deux relevés, l'app sait quand une limite se remet à zéro : elle l'affi
 
 - Un Mac sous macOS 26.
 - Un abonnement Claude (Pro, Max ou Ultra) et [Claude Code](https://claude.com/claude-code) installé et connecté.
-- [uv](https://docs.astral.sh/uv/), l'outil qui installe Python et ses bibliothèques.
+- [uv](https://docs.astral.sh/uv/), l'outil qui installe Python et ses bibliothèques. S'il manque, l'installation ci-dessous commence par lui.
 
 ## Installer
+
+D'abord uv, s'il n'est pas déjà là (`uv --version` répond par un numéro de version quand il l'est) :
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+C'est la commande officielle : elle télécharge uv depuis le site de son éditeur, Astral, et le range dans `~/.local/bin`, sans mot de passe. Avec Homebrew, `brew install uv` fait la même chose. Ouvrir ensuite une nouvelle fenêtre de terminal pour que la commande `uv` soit reconnue.
+
+Puis l'app :
 
 ```sh
 git clone https://github.com/anthamo/claude-usage.git

@@ -10,8 +10,12 @@ Avance étape par étape et dis-moi ce que tu fais en une phrase à chaque fois.
 
 1. Vérifie le terrain : la version de macOS (`sw_vers -productVersion` ; l'app est faite pour macOS 26, préviens-moi
    si la version est plus ancienne), la présence de `git` et de `uv`, et que Claude Code est connecté à un abonnement
-   (`claude auth status`). Si `uv` manque, explique-moi ce que c'est, donne-moi la commande d'installation officielle
-   (https://docs.astral.sh/uv/) et attends mon accord avant de la lancer.
+   (`claude auth status`).
+   Si `uv` manque, installe-le : explique-moi d'abord en une phrase ce que c'est (l'outil qui installe Python et les
+   bibliothèques de l'app), montre-moi la commande officielle, `curl -LsSf https://astral.sh/uv/install.sh | sh`
+   (source : https://docs.astral.sh/uv/getting-started/installation/ ; ou `brew install uv` si Homebrew est là), et
+   attends mon accord avant de la lancer. Vérifie ensuite que `uv --version` répond ; s'il n'est pas trouvé, c'est
+   qu'il est dans `~/.local/bin` et que le terminal ne le voit pas encore : utilise ce chemin pour la suite.
 2. Demande-moi où ranger le projet (propose `~/Applications-code/claude-usage` ou un dossier de mon choix), puis clone
    le dépôt à cet endroit. Ne le mets pas dans un dossier synchronisé (iCloud, Dropbox).
 3. Lis `README.md` et `installer.sh` avant de lancer quoi que ce soit. Dis-moi en trois lignes ce que le script va
