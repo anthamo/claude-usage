@@ -18,6 +18,8 @@ Elle ne se connecte pas à Claude et ne lit aucun mot de passe. Elle passe par *
 1. **En continu, sans rien coûter.** Quand Claude Code tourne dans un terminal, il donne les deux pourcentages à sa ligne d'état. L'installation ajoute une ligne d'état qui les note au passage (et affiche « Session 49 % · Semaine 20 % » en bas de Claude Code).
 2. **À la demande.** « Actualiser », dans le panneau, pose une question d'un mot à Claude et lit les pourcentages dans la réponse. Chaque actualisation consomme une toute petite part de l'abonnement : elle n'est faite que si on la demande, ou si on coche « Actualiser toutes les 15 minutes » dans les réglages.
 
+Pour quelqu'un qui n'utilise que l'app Claude, sans jamais ouvrir Claude Code : il suffit que Claude Code soit installé et connecté à son compte, et de cocher cette case. La première actualisation part alors dès le lancement de l'app. Toutes les 15 minutes, cela pèse de l'ordre de 0,4 % de la limite hebdomadaire (estimation détaillée dans `essais/sonde.md`).
+
 Entre deux relevés, l'app sait quand une limite se remet à zéro : elle l'affiche à 0 % sans attendre.
 
 ## Ce qu'il faut

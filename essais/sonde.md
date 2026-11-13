@@ -27,7 +27,19 @@ Source : https://code.claude.com/docs/en/statusline (lue le 12/11/2026).
 `utilization` va de 0 à 1. Constaté avec Claude Code 2.1.322. Cette forme n'est pas documentée : elle peut changer.
 Chaque appel consomme une toute petite part de l'abonnement.
 
+Mesuré le 13/11/2026 sur un appel : environ 19 000 jetons, presque tous d'instructions de Claude Code mises en
+cache, 92 jetons de réponse, 1,3 seconde, soit 0,002 $ au tarif public. Toutes les 15 minutes sur une journée
+entière, cela fait une centaine d'appels et environ 0,20 $ d'équivalent : négligeable devant un abonnement.
+
 ## Écarté
 
 Lire les identifiants de Claude Code dans le trousseau pour interroger directement Anthropic : c'est manipuler un
 secret pour une information que Claude Code donne déjà.
+
+## Ce que la sonde pèse dans l'abonnement (estimé le 13/11/2026)
+
+Les journaux locaux de Claude Code, chiffrés au tarif public, donnaient 124 $ pour 35 % de la semaine et 2,2 $ pour
+7 % de la session, sur l'abonnement de l'auteur. Soit environ 3,5 $ par point de semaine et 0,3 $ par point de session.
+Une sonde (0,002 $) pèse donc 0,007 % d'une session ; toutes les 15 minutes, 0,13 % d'une session de 5 heures et
+0,4 % de la semaine. Ordre de grandeur seulement : il dépend de la formule d'abonnement, et l'estimation de session
+repose sur dix minutes de données.

@@ -117,7 +117,9 @@ class App(NSObject):
         self.erreur = None
         self.absent = sonde.trouver_claude() is None
         self.actualisation = False
-        self.derniere_auto = time.monotonic()
+        # Avec l'actualisation automatique, la première part dès le lancement : sans Claude Code ouvert dans un
+        # terminal, rien d'autre ne remplit le relevé, et la jauge resterait vide un quart d'heure.
+        self.derniere_auto = time.monotonic() - AUTO
         self.hauteur = HAUTEUR_DEPART
 
         self.icone = NSStatusBar.systemStatusBar().statusItemWithLength_(NSVariableStatusItemLength)
@@ -302,6 +304,8 @@ class App(NSObject):
                 pass
             self.derniere_auto = time.monotonic()
             self.montrer()
+            if message["on"]:
+                self.actualiser()  # cocher la case donne tout de suite des chiffres frais
         elif action == "demarrage" and isinstance(message.get("on"), bool):
             try:
                 demarrage.activer() if message["on"] else demarrage.desactiver()
