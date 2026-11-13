@@ -2,7 +2,9 @@
 
 La consommation de l'abonnement Claude dans la barre de menus du Mac.
 
-Une jauge et un pourcentage à côté de l'horloge : où en est la session en cours. Un clic ouvre un panneau avec les deux limites de l'abonnement, comme sur la page d'usage de Claude :
+<img src="docs/panneau.png" width="420" alt="Le panneau : la session actuelle à 49 % et la semaine à 20 %, avec l'heure de chaque remise à zéro">
+
+Une icône et un pourcentage à côté de l'horloge : où en est la session en cours. Un clic ouvre un panneau avec les deux limites de l'abonnement, comme sur la page d'usage de Claude :
 
 - **Session actuelle** : le pourcentage utilisé, et l'heure de la remise à zéro ;
 - **Cette semaine** : le pourcentage utilisé, et le jour de la remise à zéro.
