@@ -57,10 +57,20 @@ VEILLE = 2  # secondes entre deux regards sur le fichier de relevé
 AUTO = 15 * 60  # secondes entre deux actualisations automatiques, si l'utilisateur les a demandées
 ESSAI = "--essai" in sys.argv
 
-# L'aiguille de la jauge monte par paliers ; les noms sont ceux des symboles du système.
-JAUGES = ((90, "gauge.with.dots.needle.100percent"), (62, "gauge.with.dots.needle.67percent"),
-          (40, "gauge.with.dots.needle.50percent"), (15, "gauge.with.dots.needle.33percent"),
-          (0, "gauge.with.dots.needle.0percent"))
+# L'icône de la barre de menus (dessin d'Antho, 13/11) : blanc sur fond transparent, 88 px. Déclarée « modèle »,
+# macOS la teint lui-même en noir ou en blanc selon la barre. Elle ne bouge pas : le niveau, c'est le pourcentage à côté.
+ICONE_BARRE = Path(__file__).resolve().parent / "barre.png"
+TAILLE_BARRE = 18  # points
+
+
+def icone_barre():
+    image = NSImage.alloc().initWithContentsOfFile_(str(ICONE_BARRE))
+    if image is None:  # fichier absent : le symbole du système, plutôt qu'une barre de menus vide
+        return NSImage.imageWithSystemSymbolName_accessibilityDescription_("gauge.medium", "Consommation de Claude")
+    image.setSize_((TAILLE_BARRE, TAILLE_BARRE))
+    image.setTemplate_(True)
+    image.setAccessibilityDescription_("Consommation de Claude")
+    return image
 
 
 class Fenetre(NSPanel):
@@ -124,6 +134,7 @@ class App(NSObject):
 
         self.icone = NSStatusBar.systemStatusBar().statusItemWithLength_(NSVariableStatusItemLength)
         bouton = self.icone.button()
+        bouton.setImage_(icone_barre())
         bouton.setTarget_(self)
         bouton.setAction_("basculer:")
 
@@ -180,11 +191,7 @@ class App(NSObject):
         etat = self.etat()
         session = etat.get("session")
         pourcentage = session["pourcentage"] if session else None
-        seuil_nom = next(nom for seuil, nom in JAUGES if (pourcentage or 0) >= seuil)
-        image = (NSImage.imageWithSystemSymbolName_accessibilityDescription_(seuil_nom, "Consommation de Claude")
-                 or NSImage.imageWithSystemSymbolName_accessibilityDescription_("gauge.medium", "Consommation de Claude"))
         bouton = self.icone.button()
-        bouton.setImage_(image)
         texte = releve.titre(etat)
         attributs = {NSFontAttributeName: NSFont.monospacedDigitSystemFontOfSize_weight_(13, 0)}
         if releve.niveau(pourcentage) == "limite":

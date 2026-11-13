@@ -12,7 +12,9 @@ Direction **Natif**, reprise de Hue Controller (`../hue-controller/DESIGN.md`, q
 
 ## Barre de menus
 
-Une jauge (symbole du système, dont l'aiguille monte par paliers) suivie du pourcentage de la session, « 49 % ». Sans relevé : la jauge seule. À partir de 90 % : le pourcentage en rouge.
+L'icône dessinée par Antho (13/11 : un astérisque dans un cadran, `claude_usage/barre.png`), suivie du pourcentage de la session, « 49 % ». Sans relevé : l'icône seule. À partir de 90 % : le pourcentage en rouge. L'icône est déclarée « modèle » : macOS la teint en noir ou en blanc selon la barre. Elle est fixe ; avant le 13/11, c'était une jauge du système dont l'aiguille montait par paliers, ce qui doublait le pourcentage.
+
+**Icône de l'application** (13/11) : le cadran en couleur fourni par Antho, `design/icone/app.png`, mis en forme par `outils/icone.py` (forme arrondie du Mac, coins transparents) et copié dans le lanceur.
 
 ## Structure du panneau (360 px de large, hauteur selon le contenu)
 
