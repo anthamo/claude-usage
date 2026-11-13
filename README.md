@@ -85,3 +85,7 @@ open claude_usage/panneau/index.html     # la page seule, sur de fausses donnée
 Les documents de travail : [PRD.md](PRD.md) (le problème, la solution), [DESIGN.md](DESIGN.md) (la direction visuelle), [ARCHITECTURE.md](ARCHITECTURE.md) (les fichiers, les formes, les décisions), [PLAN.md](PLAN.md) (les tâches), [essais/sonde.md](essais/sonde.md) (d'où viennent les chiffres).
 
 Limites connues : pas d'historique ni de détail par modèle ; pas de notification à l'approche de la limite ; « Actualiser » repose sur une réponse de Claude Code qui n'est pas documentée ; installation jamais essayée sur un second Mac.
+
+## Licence
+
+[MIT](LICENSE) : libre de l'utiliser, de le modifier et de le redistribuer, sans garantie.
