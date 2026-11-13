@@ -1,6 +1,6 @@
 # ARCHITECTURE : Claude Usage
 
-Écrit le 12/11/2026. Même socle que Hue Controller (`../hue-controller/ARCHITECTURE.md`) : une app Python (PyObjC) qui tient l'icône et la fenêtre en verre, une page HTML pour l'intérieur du panneau, des modules sans AppKit pour tout le reste.
+Même socle que [Hue Controller](https://github.com/anthamo/hue-controller) : une app Python (PyObjC) qui tient l'icône et la fenêtre en verre, une page HTML pour l'intérieur du panneau, des modules sans AppKit pour tout le reste.
 
 ## Vue d'ensemble
 

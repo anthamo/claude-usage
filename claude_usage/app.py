@@ -57,7 +57,7 @@ VEILLE = 2  # secondes entre deux regards sur le fichier de relevé
 AUTO = 15 * 60  # secondes entre deux actualisations automatiques, si l'utilisateur les a demandées
 ESSAI = "--essai" in sys.argv
 
-# L'icône de la barre de menus (dessin d'Antho, 13/11) : blanc sur fond transparent, 88 px. Déclarée « modèle »,
+# L'icône de la barre de menus : blanc sur fond transparent, 88 px. Déclarée « modèle »,
 # macOS la teint lui-même en noir ou en blanc selon la barre. Elle ne bouge pas : le niveau, c'est le pourcentage à côté.
 ICONE_BARRE = Path(__file__).resolve().parent / "barre.png"
 TAILLE_BARRE = 18  # points

@@ -1,6 +1,6 @@
 # PLAN : Claude Usage
 
-Écrit le 12/11/2026. Même méthode que Hue Controller : chaque tâche dit ses fichiers, son contrat, sa vérification.
+Le plan qui a servi à construire l'app. Même méthode que [Hue Controller](https://github.com/anthamo/hue-controller) : chaque tâche dit ses fichiers, son contrat, sa vérification.
 
 ## Règles pour l'exécutant
 
@@ -26,11 +26,14 @@
 | 8 | **Installation et documents.** | `installer.sh`, `README.md`, `INSTALLER_AVEC_CLAUDE.md` | relecture |
 | 9 | **Revue et essai réel.** | | le pourcentage de la barre de menus égale celui de la page d'usage |
 
-## Reste à faire (au 13/11/2026)
+## État
 
-Les neuf tâches sont faites. Prochaine action : l'installation sur un second Mac, pour quelqu'un qui n'utilise que l'app Claude.
+Les neuf tâches sont faites, plus l'icône de l'application et celle de la barre de menus.
 
-- Sur ce second Mac : vérifier que Claude Code est connecté, installer, cocher « Actualiser toutes les 15 minutes ».
-- Y vérifier que la limite est commune à l'app Claude et à Claude Code : noter le pourcentage, envoyer quelques messages dans l'app Claude, cliquer « Actualiser ». Si le chiffre ne monte pas, la solution est à revoir.
-- Jamais essayée en vrai : la première actualisation au lancement de l'app (le mode `--essai` n'actualise pas).
-- À ajouter : une notification à l'approche de la limite. (Icône de l'application et de la barre de menus : faites le 13/11.)
+Jamais essayé en vrai :
+
+- l'installation sur un second Mac, pour quelqu'un qui n'utilise que l'app Claude : vérifier que Claude Code y est connecté, installer, cocher « Actualiser toutes les 15 minutes » ;
+- que la limite est commune à l'app Claude et à Claude Code : noter le pourcentage, envoyer quelques messages dans l'app Claude, cliquer « Actualiser ». Si le chiffre ne monte pas, cet usage est à revoir ;
+- la première actualisation au lancement de l'app (le mode `--essai` n'actualise pas).
+
+À ajouter : une notification à l'approche de la limite.

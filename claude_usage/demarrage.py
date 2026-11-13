@@ -106,7 +106,7 @@ def installer_app(app=None, uv=None, dossier=None):
     os.utime(app)
     # shlex.quote : le chemin du projet peut contenir des espaces.
     # `cd` d'abord : le paquet n'est pas installé, Python le trouve dans le dossier courant (sans ça : « No module named
-    # claude_usage », constaté le 12/11/2026).
+    # claude_usage »).
     programme.write_text(f"#!/bin/sh\ncd {shlex.quote(dossier)} || exit 1\nexec {shlex.quote(uv)} run python -m claude_usage\n")
     programme.chmod(0o755)
     return app
